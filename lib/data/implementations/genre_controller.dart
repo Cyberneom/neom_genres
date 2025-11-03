@@ -3,21 +3,20 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:neom_commons/commons/ui/theme/app_color.dart';
-import 'package:neom_commons/commons/utils/constants/app_page_id_constants.dart';
-import 'package:neom_core/core/app_config.dart';
-import 'package:neom_core/core/data/firestore/genre_firestore.dart';
-import 'package:neom_core/core/data/implementations/app_drawer_controller.dart';
-import 'package:neom_core/core/data/implementations/user_controller.dart';
-import 'package:neom_core/core/domain/model/app_profile.dart';
-import 'package:neom_core/core/domain/model/genre.dart';
-import 'package:neom_core/core/utils/constants/data_assets.dart';
+import 'package:neom_commons/ui/theme/app_color.dart';
+import 'package:neom_commons/utils/constants/app_page_id_constants.dart';
+import 'package:neom_core/app_config.dart';
+import 'package:neom_core/data/firestore/genre_firestore.dart';
+import 'package:neom_core/domain/model/app_profile.dart';
+import 'package:neom_core/domain/model/genre.dart';
+import 'package:neom_core/domain/use_cases/app_drawer_service.dart';
+import 'package:neom_core/domain/use_cases/genre_service.dart';
+import 'package:neom_core/domain/use_cases/user_service.dart';
+import 'package:neom_core/utils/constants/data_assets.dart';
 
-import '../../domain/use_cases/genres_service.dart';
+class GenreController extends GetxController implements GenreService {
 
-class GenresController extends GetxController implements GenresService {
-
-  final userController = Get.find<UserController>();
+  final userServiceImpl = Get.find<UserService>();
 
   final RxMap<String, Genre> genres = <String, Genre>{}.obs;
   final RxMap<String, Genre> favGenres = <String,Genre>{}.obs;
@@ -34,11 +33,11 @@ class GenresController extends GetxController implements GenresService {
     AppConfig.logger.t("Genres Init");
     await loadGenres();
 
-    if(userController.profile.genres != null) {
-      favGenres.value = userController.profile.genres!;
+    if(userServiceImpl.profile.genres != null) {
+      favGenres.value = userServiceImpl.profile.genres!;
     }
 
-    profile = userController.profile;
+    profile = userServiceImpl.profile;
 
     sortFavGenres();
   }
@@ -113,7 +112,7 @@ class GenresController extends GetxController implements GenresService {
       genreId: genre.id, prevGenreId:  prevGenreId);
 
     profile.genres![genre.id] = genre;
-    Get.find<AppDrawerController>().updateProfile(profile);
+    Get.find<AppDrawerService>().updateProfile(profile);
 
     update([AppPageIdConstants.genres]);
   }
