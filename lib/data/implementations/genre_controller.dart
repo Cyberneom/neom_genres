@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+import 'package:sint/sint.dart';
 import 'package:neom_commons/ui/theme/app_color.dart';
 import 'package:neom_commons/utils/constants/app_page_id_constants.dart';
 import 'package:neom_core/app_config.dart';
@@ -14,9 +14,9 @@ import 'package:neom_core/domain/use_cases/genre_service.dart';
 import 'package:neom_core/domain/use_cases/user_service.dart';
 import 'package:neom_core/utils/constants/data_assets.dart';
 
-class GenreController extends GetxController implements GenreService {
+class GenreController extends SintController implements GenreService {
 
-  final userServiceImpl = Get.find<UserService>();
+  final userServiceImpl = Sint.find<UserService>();
 
   final RxMap<String, Genre> genres = <String, Genre>{}.obs;
   final RxMap<String, Genre> favGenres = <String,Genre>{}.obs;
@@ -112,7 +112,7 @@ class GenreController extends GetxController implements GenreService {
       genreId: genre.id, prevGenreId:  prevGenreId);
 
     profile.genres![genre.id] = genre;
-    Get.find<AppDrawerService>().updateProfile(profile);
+    Sint.find<AppDrawerService>().updateProfile(profile);
 
     update([AppPageIdConstants.genres]);
   }

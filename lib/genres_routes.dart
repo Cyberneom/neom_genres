@@ -1,7 +1,7 @@
-import 'package:get/get.dart';
+import 'package:sint/sint.dart';
 
 class GenresRoutes {
 
-  static final List<GetPage<dynamic>> routes = [];
+  static final List<SintPage<dynamic>> routes = [];
 
 }
