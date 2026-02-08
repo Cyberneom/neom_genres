@@ -1,3 +1,11 @@
+### 1.2.0 - SDK Update & Maintenance Release
+- Updated SDK constraints to `>=3.8.0 <4.0.0`
+- Updated Flutter environment to `>=3.19.0`
+- Updated `flutter_lints` to `^5.0.0`
+- Code maintenance and dependency alignment with ecosystem
+
+---
+
 ### 1.0.0 - Initial Release & Decoupling from neom_instruments
 This marks the initial official release (v1.0.0) of neom_genres as a new, independent module within the Open Neom ecosystem. Previously, genre management functionalities were often intertwined with other preference modules like neom_instruments. This decoupling is a crucial step in formalizing the genre management layer, enhancing modularity, and strengthening Open Neom's adherence to Clean Architecture principles.
 
