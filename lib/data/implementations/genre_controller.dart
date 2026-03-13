@@ -142,7 +142,7 @@ class GenreController extends SintController implements GenreService {
       yield Padding(
         padding: const EdgeInsets.all(5.0),
         child: FilterChip(
-          backgroundColor: AppColor.main50,
+          backgroundColor: AppColor.surfaceBright,
           avatar: CircleAvatar(
             backgroundColor: Colors.cyan.shade500,
             child: Text(genre.name[0].toUpperCase(),
@@ -155,7 +155,7 @@ class GenreController extends SintController implements GenreService {
           ),
           label: Text(genre.name.capitalize, style: const TextStyle(fontSize: 12),),
           selected: selectedGenres.contains(genre),
-          selectedColor: AppColor.main50,
+          selectedColor: AppColor.surfaceCard,
           onSelected: (bool selected) {
             genre.isFavorite = true;
             selected ? addGenreFromChips(genre) : removeGenreFromChips(genre);
