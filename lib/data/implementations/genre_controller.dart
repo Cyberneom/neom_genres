@@ -107,7 +107,7 @@ class GenreController extends SintController implements GenreService {
     }
 
     genre.isMain = true;
-    favGenres.update(genre.name, (g) => g);
+    favGenres.update(genre.id, (g) => g);
     GenreFirestore().updateMainGenre(profileId: profile.id,
       genreId: genre.id, prevGenreId:  prevGenreId);
 

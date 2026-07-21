@@ -1,3 +1,6 @@
+
+## [2.0.0-unreleased] - 2026-07-21
+- Refactor and compatibility updates for genre_controller.dart.
 ### 1.2.0 - SDK Update & Maintenance Release
 - Updated SDK constraints to `>=3.8.0 <4.0.0`
 - Updated Flutter environment to `>=3.19.0`
